@@ -10,6 +10,8 @@
 //Includers from project files
 //
 #include "DREMTubesDetectorConstruction.hh"
+#include "DREMTubesDetectorMessenger.hh"
+#include "DREMTubesDetectorMessenger.cc"
 
 //Includers from Geant4
 //
@@ -55,9 +57,11 @@ const G4double sq3m1=sq3/3.;
 DREMTubesDetectorConstruction::DREMTubesDetectorConstruction(const G4bool VertRot)
     : G4VUserDetectorConstruction(),
     fCheckOverlaps(false),
-		fLeakCntPV(nullptr),
+    fLeakCntPV(nullptr),
     fWorldPV(nullptr),
     fVertRot(VertRot){
+
+        fDetectorMessenger = new DREMTubesDetectorMessenger(this);
 }
 
 //De-constructor
@@ -593,7 +597,7 @@ G4VPhysicalVolume* DREMTubesDetectorConstruction::DefineVolumes() {
 
     // Horizontal rotation of the platform (including prototype)
     G4RotationMatrix platform_rotmat  = G4RotationMatrix();
-    double horiz_rot = 0*deg;
+    double horiz_rot = fHorizRot;
     platform_rotmat.rotateY(horiz_rot);
     double platform_half_height = 25*mm;     // Height guessed for now
     G4Material* platformMaterial = nistManager->FindOrBuildMaterial("G4_Fe");
