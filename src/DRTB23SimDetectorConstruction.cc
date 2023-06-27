@@ -10,6 +10,8 @@
 //Includers from project files
 //
 #include "DRTB23SimDetectorConstruction.hh"
+#include "DREMTubesDetectorMessenger.hh"
+#include "DREMTubesDetectorMessenger.cc"
 
 //Includers from Geant4
 //
@@ -1138,7 +1140,6 @@ G4LogicalVolume* DRTB23SimDetectorConstruction::constructcherfiber(double tolera
 //   method to define polygonal contour of module to extrude
 //
 std::vector<G4TwoVector> DRTB23SimDetectorConstruction::calcmod(double radius, int nrow, int ncol) {
-   G4double dxlr=radius;
    G4double dtubeY=sq3*radius;
    G4double moduleX = ncol*2.*radius+radius;
    G4double side=radius*2*sq3m1;

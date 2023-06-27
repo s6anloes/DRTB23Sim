@@ -25,6 +25,7 @@
 //
 class G4VPhysicalVolume;
 class G4GlobalMagFieldMessenger;
+class DREMTubesDetectorMessenger;
 
 class DRTB23SimDetectorConstruction : public G4VUserDetectorConstruction {
   
@@ -64,20 +65,25 @@ class DRTB23SimDetectorConstruction : public G4VUserDetectorConstruction {
                                             G4Material* CladCherMaterial);
         //Getters
     	//
-	const G4VPhysicalVolume* GetLeakCntPV() const;
+        const G4VPhysicalVolume* GetLeakCntPV() const;
     	const G4VPhysicalVolume* GetWorldPV() const;
 
         //Other methods
-	//
-	G4int GetTowerID( const G4int& cpno ) const;
+        //
+        G4int GetTowerID( const G4int& cpno ) const;
         G4int GetSiPMID(const G4int& cpno ) const; 
-	G4int GetSiPMTower(const G4int& town ) const;
+        G4int GetSiPMTower(const G4int& town ) const;
+        inline double GetHorizontalRotation() { return fHorizRot; }
+
+        //Setters
+        //
+        inline void SetHorizontalRotation(double HorizRot) { fHorizRot=HorizRot; }
        
         //
-	//  Build contour in x-y plane of a module as 
-	//  an hexcell shape
-	//
-	std::vector<G4TwoVector> calcmod(double radius, int nrow, int ncol); 
+        //  Build contour in x-y plane of a module as 
+        //  an hexcell shape
+        //
+        std::vector<G4TwoVector> calcmod(double radius, int nrow, int ncol); 
 
     private:
         
@@ -85,18 +91,23 @@ class DRTB23SimDetectorConstruction : public G4VUserDetectorConstruction {
         //
         G4VPhysicalVolume* DefineVolumes();
 /*
-	void DefineCommands();
-	G4GenericMessenger* fMessenger;
-	G4double fAngleX;
-	G4double fAngleY;
-*/				//Members
-				//
+        void DefineCommands();
+        G4GenericMessenger* fMessenger;
+        G4double fAngleX;
+        G4double fAngleY;
+*/				
+        //Members
+        //
         G4bool  fCheckOverlaps; // option for checking volumes overlaps
-				
-				G4VPhysicalVolume* fLeakCntPV; //PV: lekage counter
-				G4VPhysicalVolume* fWorldPV;   //PV: wourld volume
+        
+        G4VPhysicalVolume* fLeakCntPV; //PV: lekage counter
+        G4VPhysicalVolume* fWorldPV;   //PV: wourld volume
 
-        G4bool fVertRot;  
+        G4bool fVertRot;
+        double fHorizRot = 0.0*deg;
+        /// Messenger that allows to modify geometry
+        DREMTubesDetectorMessenger* fDetectorMessenger;
+
 };
 
 inline G4int DRTB23SimDetectorConstruction::GetTowerID( const G4int& cpno ) const {
