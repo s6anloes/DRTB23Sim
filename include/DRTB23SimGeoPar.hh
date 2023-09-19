@@ -7,19 +7,43 @@
 //Includers from Geant4
 //
 #include "G4SystemOfUnits.hh"
+#include <numeric>
 
 namespace { 
 
     // module constants
-    constexpr G4int NofmodulesX = 3; 
-    constexpr G4int NofmodulesY = 3;
-    constexpr G4int modflag[9]={3,2,1,5,0,4,8,7,6};
-    constexpr G4int NoModulesSiPM=1;
-    constexpr G4int SiPMMod[1]={0};
-    constexpr G4int NofFiberscolumn = 16;
-    constexpr G4int NofFibersrow = 20;
-    constexpr G4int NoModulesActive=9;
-    constexpr G4double moduleZ = (1000.)*mm;
+    constexpr G4int NofmodulesX = 10;
+    constexpr G4int NofmodulesY = 10;
+    // const int modflag[120]={-1,-1,-1,-1,-1,-1,-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,-1,-1,-1,-1,-1,-1,-1,
+    //                    -1,-1,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,-1,-1,
+    //                    30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,
+    //                    -1,-1,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,-1,-1,
+    //                    -1,-1,-1,-1,-1,-1,-1,74,75,76,77,78,79,80,81,82,83,-1,-1,-1,-1,-1,-1,-1};
+    constexpr G4int modflag[100]={0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+                       10,11,12,13,14,15,16,17,18,19,
+                       20,21,22,23,24,25,26,27,28,29,
+    //                 30,31,32,33,34,35,36,37,38,39,
+                       40,41,42,43,44,45,46,47,48,49,
+                       50,51,52,53,54,55,56,57,58,59,
+                       60,61,62,63,64,65,66,67,68,69,
+                       70,71,72,73,74,75,76,77,78,79,
+                       80,81,82,83,84,85,86,87,88,89,
+                       90,91,92,93,94,95,96,97,98,99};
+    constexpr G4int NoModulesSiPM=100;
+    constexpr G4int SiPMMod[100]={0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 
+                       10,11,12,13,14,15,16,17,18,19,
+                       20,21,22,23,24,25,26,27,28,29,
+    //                 30,31,32,33,34,35,36,37,38,39,
+                       40,41,42,43,44,45,46,47,48,49,
+                       50,51,52,53,54,55,56,57,58,59,
+                       60,61,62,63,64,65,66,67,68,69,
+                       70,71,72,73,74,75,76,77,78,79,
+                       80,81,82,83,84,85,86,87,88,89,
+                       90,91,92,93,94,95,96,97,98,99};
+    constexpr G4int NofFiberscolumn = 32;
+    constexpr G4int NofFibersrow = 40;
+    constexpr G4int NoModulesActive=100;
+    constexpr G4double moduleZ = (2500.)*mm;
     constexpr G4bool irot=false;
     constexpr G4int NoFibersTower=NofFiberscolumn*NofFibersrow/2;
 
@@ -46,9 +70,9 @@ namespace {
     constexpr G4double bar_pos_from_front = 16.0*cm;
 
     // housing constants
-    constexpr G4double housing_half_length = 145.5*cm/2;
-    constexpr G4double housing_half_width  = 18.0*cm/2;
-    constexpr G4double housing_half_height = 15.0*cm/2;
+    constexpr G4double housing_half_length = 345.5*cm/2;
+    constexpr G4double housing_half_width  = 118.0*cm/2;
+    constexpr G4double housing_half_height = 115.0*cm/2;
     constexpr G4double side_wall_thickness = 1.5*mm;
     constexpr G4double top_wall_thickness  = 1.4*mm;
     constexpr G4double bot_wall_thickness  = 10.0*mm;
