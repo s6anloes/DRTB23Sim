@@ -24,8 +24,8 @@ class DRTB23SimSignalHelper {
 
 	const G4double fk_B = 0.126; //Birks constant
 
-	const G4double fSAttenuationLength = 191.6*CLHEP::cm; // from test beam data
-	const G4double fCAttenuationLength = 388.9*CLHEP::cm; // from test beam data
+	const G4double fSAttenuationLength = 999999999191.6 *CLHEP::cm; // from test beam data
+	const G4double fCAttenuationLength = 999999999388.9 *CLHEP::cm; // from test beam data
 
 	//Private constructor (singleton)
         //
