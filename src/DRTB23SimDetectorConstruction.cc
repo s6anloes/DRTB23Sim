@@ -475,7 +475,7 @@ G4VPhysicalVolume* DRTB23SimDetectorConstruction::DefineVolumes() {
     * Stage Volume:                                                                                  *
     * "Virtual" Volume only used to move platform, calorimeter and preshower in unison wrt. the beam *
     **************************************************************************************************/
-    G4Box*            stage_solid   = new G4Box("stage_solid", platform_radius, platform_radius, platform_radius);
+    G4Box*            stage_solid   = new G4Box("stage_solid", platform_radius, platform_radius, platform_radius*4);
     G4LogicalVolume*  stage_logical = new G4LogicalVolume(stage_solid, defaultMaterial, "stage_logical");
     stage_logical->SetVisAttributes(G4VisAttributes::Invisible);
     G4double stage_x = fXshift; //set via G4UIMessenger, default=0.

@@ -50,7 +50,7 @@ namespace {
     // preshower constants
     constexpr G4double preshower_pos_x = 0.0*cm;
     constexpr G4double preshower_pos_y = 0.0*cm;
-    constexpr G4double preshower_pos_z = -53.0*cm;
+    constexpr G4double preshower_pos_z = -553.0*cm;
 
     // Comment on naming convention for housing variables:
     // length = direction along local z
@@ -59,7 +59,7 @@ namespace {
     // thickness = from context
 
     // platform constants
-    constexpr G4double platform_radius = 1200*mm;    // Radius guessed for now
+    constexpr G4double platform_radius = 3000*mm;    // Radius guessed for now
     constexpr G4double platform_half_height = 25*mm;     // Height guessed for now
     
     // bar/feet constants
