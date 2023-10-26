@@ -45,11 +45,11 @@ G4double DRTB23SimSignalHelper::ApplyBirks( const G4double& de, const G4double& 
 
 //Define SmearSSignal() method
 //
-G4int DRTB23SimSignalHelper::SmearSSignal( const G4double& satde ) { return G4Poisson(satde*21.32); }
+G4int DRTB23SimSignalHelper::SmearSSignal( const G4double& satde ) { return G4Poisson(satde*9.5 /*21.32*/); }
 
 //Define SmearCSignal() method
 //
-G4int DRTB23SimSignalHelper::SmearCSignal( ){ return G4Poisson(0.243); }
+G4int DRTB23SimSignalHelper::SmearCSignal( ){ return G4Poisson(0.153/*0.243*/); }
 
 //Define GetDistanceToSiPM() method
 //
